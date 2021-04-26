@@ -1,0 +1,34 @@
+# Except for the secret key, none of these are actually needed; Rocket has sane
+# defaults. We show all of them here explicitly for demonstrative purposes.
+
+# [global.limits]
+# forms = "64 kB"
+# json = "1 MiB"
+# msgpack = "2 MiB"
+# # files = { "jpg" = "5 MiB" }
+
+[development]
+address = "127.0.0.1"
+port = 8000
+workers = 1
+keep_alive = 0
+log_level = "normal"
+
+[development.storage]
+data_dir = "data"
+file_dir = "data/files"
+temp_dir = "data/temp"
+
+[production]
+address = "127.0.0.1"
+port = 8000
+workers = 2
+keep_alive = 5
+log_level = "critical"
+# don't use this key! generate your own and keep it private!
+secret_key = "hPRYyVRiMyxpw5sBB1XeCMN1kFsDCqKvBi2QJxBVHQk="
+
+[production.storage]
+data_dir = "data"
+file_dir = "data/files"
+temp_dir = "data/temp"
