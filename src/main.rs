@@ -1,5 +1,4 @@
 #![feature(proc_macro_hygiene, decl_macro, never_type)]
-#[macro_use]
 extern crate rocket;
 extern crate rocket_contrib;
 use rocket::fairing::AdHoc;
@@ -17,6 +16,8 @@ fn rocket() -> rocket::Rocket {
             Ok(rocket.manage(storage))
         }))
         .mount("/", routes::index::routes())
+        .mount("/", routes::download::routes())
+        .mount("/", routes::upload::routes())
         .mount("/assets", StaticFiles::from("assets"))
 }
 

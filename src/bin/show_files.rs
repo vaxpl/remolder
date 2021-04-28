@@ -14,8 +14,8 @@ fn main() {
     println!("Displaying {} files", results.len());
     for file in results {
         println!(
-            "# {:<6} {:<32} {:>10} {}",
-            file.id, file.hash, file.size, file.path
+            "# {:<6} {:<32} {:>10} {} {}",
+            file.id, file.hash, file.size, file.path, file.mime
         );
     }
 }

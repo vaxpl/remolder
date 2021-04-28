@@ -7,6 +7,7 @@ pub struct File {
     pub id: i32,
     pub hash: String,
     pub path: String,
+    pub mime: String,
     pub size: i32,
     pub created_at: NaiveDateTime,
 }
@@ -16,5 +17,6 @@ pub struct File {
 pub struct NewFile<'a> {
     pub hash: &'a str,
     pub path: &'a str,
+    pub mime: &'a str,
     pub size: i32,
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+{{> head }}
+
+<body>
+    {{> header }}
+
+    <div class="container">
+        <form id="upload" role="form" class="form-horizontal" action="/up" method="POST">
+            <div class="form-group">
+                <label for="file">Which file to upload:</label>
+                <input class="form-control" type="file" name="file" id="file">
+            </div>
+            <div class="form-group">
+                <label for="path">Path on the server<i>(optional):<i></label>
+                <input class="form-control" type="text" name="remote_path" id="remote_path">
+            </div>
+            <div class="form-group row">
+                <button class="btn btn-primary" id="submit">Upload</button>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //document.getElementById("file").onchange = function (e) {
+            //    document.getElementById("remote_path").value = this.value.split(/[\\\/]/).pop();;
+            //}
+
+            $("#file").on('change', function (e) {
+                $("#remote_path").value = this.value.split(/[\\\/]/).pop();
+            });
+
+            $('#upload').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'up',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    error: function (xhr, data) {
+                        alert(xhr.responseText);
+                    },
+                    success: function (data) {
+                        document.location = "/";
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    {{> footer }}
+</body>
+
+</html>

@@ -14,7 +14,7 @@ fn main() {
     stdin().read_line(&mut path).unwrap();
     let path = &path[..(path.len() - 1)]; // Drop the newline character
 
-    let r = db::files::add_file(&connection, hash, path, 12345);
+    let r = db::files::add_file(&connection, hash, path, "application/x-unknown", 12345);
 
     println!("\nSaved draft {} = {:?}", path, r);
 }
