@@ -23,12 +23,12 @@
                     <tbody>
                         {{#each list}}
                         <tr>
-                            <th><a href="dl/{{ id }}">{{ id }}</a></th>
-                            <td><a href="dl/{{ path }}">{{ path }}</a></td>
-                            <td>{{ size }}</td>
-                            <td>{{ created_at }}</td>
-                            <td>{{ mime }}</td>
-                            <td><a href="dl/{{ hash }}">{{ hash }}</a></td>
+                            <th><a href="dl/{{ file.id }}">{{ file.id }}</a></th>
+                            <td><a href="dl/{{ file.path }}">{{ file.path }}</a></td>
+                            <td>{{ file.size }}</td>
+                            <td>{{ created_at_str }}</td>
+                            <td>{{ file.mime }}</td>
+                            <td><a href="dl/{{ file.hash }}">{{ file.hash }}</a></td>
                         </tr>
                         {{/each}}
                     </tbody>
