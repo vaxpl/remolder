@@ -33,8 +33,9 @@ pub fn add_file(
 /// Returns all files from the database.
 pub fn all_files(conn: &SqliteConnection) -> Result<Vec<File>, diesel::result::Error> {
     use super::schema::files;
+    use super::schema::files::id;
 
-    files::table.load::<File>(conn)
+    files::table.order(id.desc()).load::<File>(conn)
 }
 
 /// Find and returns a file by hash or path from the database.
