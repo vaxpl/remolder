@@ -28,7 +28,7 @@
                             <td>{{ file.size }}</td>
                             <td>{{ created_at_str }}</td>
                             <td>{{ file.mime }}</td>
-                            <td><a href="dl/{{ file.hash }}">{{ file.hash }}</a></td>
+                            <td class="mono"><a href="dl/{{ file.hash }}">{{ file.hash }}</a></td>
                         </tr>
                         {{/each}}
                     </tbody>
