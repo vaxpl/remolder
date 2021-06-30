@@ -45,6 +45,7 @@ pub fn find_file(conn: &SqliteConnection, path_val: &str) -> Result<File, diesel
 
     let mut v = files::table
         .filter(hash.eq(path_val).or(path.eq(path_val)))
+        .order(id.desc())
         .limit(1)
         .load::<File>(conn)?;
     v.pop().ok_or(diesel::result::Error::NotFound)
